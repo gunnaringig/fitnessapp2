@@ -9,29 +9,20 @@ import {ExerciseService} from 'src/app/exercise.service'
   templateUrl: './exercise.component.html',
   styleUrls: ['./exercise.component.css']
 })
-<<<<<<< HEAD
 export class ExerciseComponent {
   programs$;
   message: string;
   selected: string;
-=======
-export class ExerciseComponent  {
-  message: string;
->>>>>>> parent of 39daeba... fixing merge
 
   constructor(private programService: ProgramService, private router: Router, private exerciseService: ExerciseService) { 
     this.programs$ = programService.get();
   }
 
-<<<<<<< HEAD
+
   //save exercise with date from template to database 
   save(Exercises, name) {
     name = this.selected;
     this.exerciseService.create(Exercises, name);
-=======
-  ngOnInit(){
-    this.exerciseService.create(this.message);
->>>>>>> parent of 39daeba... fixing merge
   }
 
   onChange(e){
