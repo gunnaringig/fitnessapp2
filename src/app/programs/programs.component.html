@@ -9,14 +9,12 @@
     <div class="form-group">
         <label for="program">Workout programs</label>
             <select [(ngModel)]="programName"  name="name" id="name" class="form-control">
-                    <option>Choose...</option>
-                    <option *ngFor="let c of programsTest" [value]="c.name" (change)="onSelect($event)">
-                            {{ c.name }}
-                         </option>
-                </select>
+                <option>Choose...</option>
+                <option *ngFor="let c of programs$ | async" [value]="c.name">
+                    {{ c.name }}
+                </option>
+            </select>
     </div>
-
-    <button class="btn btn-primary" (click)=addExercise()>Add new exercise</button>
 
     <button class="btn btn-primary">Save</button>
 </form>

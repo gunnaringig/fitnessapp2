@@ -9,20 +9,22 @@ import {ExerciseService} from 'src/app/exercise.service'
   templateUrl: './exercise.component.html',
   styleUrls: ['./exercise.component.css']
 })
-export class ExerciseComponent  {
+export class ExerciseComponent {
+  programs$;
   message: string;
+  selected: string;
 
-  constructor( private programService: ProgramService,private router: Router, private exerciseService: ExerciseService) { 
+  constructor(private programService: ProgramService, private router: Router, private exerciseService: ExerciseService) { 
+    this.programs$ = programService.get();
   }
 
-  ngOnInit(){
-    this.exerciseService.create(this.message);
+  //save exercise with date from template to database 
+  save(Exercises, name) {
+    name = this.selected;
+    this.exerciseService.create(Exercises, name);
   }
 
-  //save product with date from template to database 
-  save(Exercises) {
-    this.programService.create(Exercises);
-//    this.router.navigate(['']);
+  onChange(e){
+    this.selected = e;
   }
- 
 }

@@ -1,1 +1,16 @@
 <p>home works!</p>
+
+<table class="table">
+    <thead>
+        <tr *ngFor="let p of programs$ | async">
+            <th>Program Name: {{ p.name }}</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let e of exercise$ | async">
+            <td>{{ e.name }}</td>       
+        </tr>
+    </tbody>
+</table>
+
