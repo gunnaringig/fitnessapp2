@@ -11,6 +11,7 @@ import { Subject } from 'rxjs';
   templateUrl: './programs.component.html',
   styleUrls: ['./programs.component.css']
 })
+<<<<<<< HEAD
 export class ProgramComponent implements OnInit {
   programs$;
   programs: Programs[];
@@ -27,11 +28,30 @@ export class ProgramComponent implements OnInit {
 
   ngOnInit(){
     this.getPrograms();
+=======
+export class ProgramComponent  {
+  programs: Programs[];
+  programsTest = [];
+  currentSelected: string;
+
+  constructor( private programService: ProgramService,private router: Router) { 
+    this.programService.get()
+    .subscribe( test => {
+      this.programsTest = test;
+    })
+>>>>>>> parent of a9b82c7... Added simple view for plans on /home or root
   }
+
 
   //save product with date from template to database 
   save(Programs) {
     this.programService.create(Programs);
+    this.router.navigate(['']);
+  }
+
+  onSelect($event){
+    this.programsTest.find(x => x.name === this.currentSelected);
+    console.log(this.currentSelected);
   }
 
   getPrograms(){

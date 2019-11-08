@@ -7,17 +7,12 @@ import { Exercises } from 'src/app/models/Exercises';
 })
 export class ExerciseService {
 
-  constructor(private db: AngularFireDatabase) { 
-
-  }
+  constructor(private db: AngularFireDatabase) 
+  { }
   
   //Add product to database
-  create(Exercises, programName){
-    return this.db.list('/programs/' + programName + '/exercise').push(Exercises);
-  }
-
-  get(){
-    return this.db.list('/programs/exercise').valueChanges();
+  create(Exercises, name){
+    return this.db.list('/exercise' + name).push(Exercises);
   }
 }
 
