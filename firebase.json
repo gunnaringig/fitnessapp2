@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/fitnessappv2",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
