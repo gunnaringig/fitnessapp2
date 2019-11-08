@@ -26,5 +26,6 @@ export class ExerciseComponent {
 
   onChange(e){
     this.selected = e;
+    console.log(this.selected);
   }
 }

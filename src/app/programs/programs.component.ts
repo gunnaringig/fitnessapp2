@@ -11,11 +11,22 @@ import { Subject } from 'rxjs';
   templateUrl: './programs.component.html',
   styleUrls: ['./programs.component.css']
 })
-export class ProgramComponent  {
-  programs$
+export class ProgramComponent implements OnInit {
+  programs$;
+  programs: Programs[];
+  test: [];
+  test2: any;
 
   constructor(private programService: ProgramService, private router: Router) { 
-    this.programs$ = programService.get();
+    this.programService.get()
+      .subscribe(e => 
+        {this.programs$ = e});
+
+    console.log(this.programs$);
+  }
+
+  ngOnInit(){
+    this.getPrograms();
   }
 
   //save product with date from template to database 
@@ -23,8 +34,15 @@ export class ProgramComponent  {
     this.programService.create(Programs);
   }
 
-  addExercise(){
+  getPrograms(){
+    this.programService.getObject().valueChanges().subscribe(e =>
+      {
+        this.test2 = e;
+      })
+      console.log(this.test2);
+  }
 
+  addExercise(){
     this.router.navigate(['/exercise']);
   }
  

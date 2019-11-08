@@ -18,6 +18,10 @@ export class ProgramService {
   }
 
   get(){
-    return this.db.list('/programs').valueChanges();
+    return this.db.list('/programs').snapshotChanges();
+  }
+
+  getObject(){
+    return this.db.object('/programs/');
   }
 }
