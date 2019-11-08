@@ -2,24 +2,21 @@
 <form #f="ngForm" (ngSubmit)="save(f.value)">
 
     <div class="form-group">
-        <label for="exercise">Exercise</label>
-        <input ngModel name="exercise" id="exercise" type="text" class="form-control">
+        <label for="exercise">Name</label>
+        <input ngModel name="name" id="name" type="text" class="form-control">
     </div>
 
     <div class="form-group">
-        <label for="description">Description</label>
-        <input ngModel name="description" id="description" type="text" class="form-control">
+        <label for="program">Workout programs</label>
+            <select [(ngModel)]="programName"  name="name" id="name" class="form-control">
+                    <option>Choose...</option>
+                    <option *ngFor="let c of programsTest" [value]="c.name" (change)="onSelect($event)">
+                            {{ c.name }}
+                         </option>
+                </select>
     </div>
 
-    <div class="form-group">
-        <label for="set">Set</label>
-        <input ngModel name="set" id="set" type="number" class="form-control">
-    </div> 
-    
-    <div class="form-group">
-        <label for="reps-time">Reps/time</label>
-        <input ngModel name="reps-time" id="reps-time" type="number" class="form-control">
-    </div> 
+    <button class="btn btn-primary" (click)=addExercise()>Add new exercise</button>
 
     <button class="btn btn-primary">Save</button>
 </form>

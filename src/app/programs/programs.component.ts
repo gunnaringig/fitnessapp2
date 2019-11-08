@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from 'src/app/category.service';
 import { ProgramService } from 'src/app/program.service';
+import { RouterModule, Router } from '@angular/router';
+import { Programs } from 'src/app/models/programs';
+import { FormBuilder } from '@angular/forms';
+import 'rxjs/add/operator/map';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-programs',
@@ -8,15 +12,32 @@ import { ProgramService } from 'src/app/program.service';
   styleUrls: ['./programs.component.css']
 })
 export class ProgramComponent  {
-  categories$;
+  programs: Programs[];
+  programsTest = [];
+  currentSelected: string;
 
-  constructor(categoryService: CategoryService, private programService: ProgramService) { 
-    this.categories$ = categoryService.getCategories();
+  constructor( private programService: ProgramService,private router: Router) { 
+    this.programService.get()
+    .subscribe( test => {
+      this.programsTest = test;
+    })
   }
 
+
   //save product with date from template to database 
-  save(program) {
-    this.programService.create(program);
+  save(Programs) {
+    this.programService.create(Programs);
+    this.router.navigate(['']);
+  }
+
+  onSelect($event){
+    this.programsTest.find(x => x.name === this.currentSelected);
+    console.log(this.currentSelected);
+  }
+
+  addExercise(){
+
+    this.router.navigate(['/exercise']);
   }
  
 }

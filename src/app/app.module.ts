@@ -24,8 +24,9 @@ import { AuthService } from './auth.service';
 import { AuthGuardService as AuthGuard, AuthGuardService } from './auth-guard.service';
 import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
-import { CategoryService } from './category.service';
 import { ProgramService } from './program.service';
+import { ExerciseComponent } from './exercise/exercise.component';
+import { ExerciseService } from './exercise.service';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ProgramService } from './program.service';
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    LoginComponent
+    LoginComponent,
+    ExerciseComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,7 @@ import { ProgramService } from './program.service';
       { path: '', component: HomeComponent },
       { path: 'products', component: ProgramComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'exercise', component: ExerciseComponent},
 
       { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
       { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
@@ -73,8 +76,8 @@ import { ProgramService } from './program.service';
     AuthGuardService,
     AdminAuthGuardService,
     UserService,
-    CategoryService,
-    ProgramService
+    ProgramService,
+    ExerciseService
   ],
   bootstrap: [AppComponent]
 })
