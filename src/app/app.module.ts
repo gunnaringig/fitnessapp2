@@ -17,6 +17,8 @@ import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ProgramComponent } from './programs/programs.component';
 import { CheckOutComponent } from './check-out/check-out.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AuthGuardService as AuthGuard, AuthGuardService } from './auth-guard.service';
@@ -34,6 +36,8 @@ import { ExerciseService } from './exercise.service';
     HomeComponent,
     ProgramComponent,
     CheckOutComponent,
+    OrderSuccessComponent,
+    MyOrdersComponent,
     LoginComponent,
     ExerciseComponent
   ],
@@ -47,17 +51,22 @@ import { ExerciseService } from './exercise.service';
     NgbModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
+      { path: 'products', component: ProgramComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'exercise', component: ExerciseComponent},
+
+      { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
+      { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
 
       { 
         path: 'products', 
         component: ProgramComponent, 
         canActivate: [AuthGuardService, AdminAuthGuardService] 
       },
-
       { 
-        path: 'exercise', 
-        component: ExerciseComponent, 
+        path: 'products/new', 
+        component: ProgramComponent, 
         canActivate: [AuthGuardService, AdminAuthGuardService] 
       }
     ])

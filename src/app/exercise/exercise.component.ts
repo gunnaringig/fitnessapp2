@@ -9,14 +9,13 @@ import {ExerciseService} from 'src/app/exercise.service'
   templateUrl: './exercise.component.html',
   styleUrls: ['./exercise.component.css']
 })
-export class ExerciseComponent {
-  programs$;
+export class ExerciseComponent  {
   message: string;
   selected: string;
-
-  constructor(private programService: ProgramService, private router: Router, private exerciseService: ExerciseService) { 
-    this.programs$ = programService.get();
+  name: string;
+  constructor( private programService: ProgramService,private router: Router, private exerciseService: ExerciseService) { 
   }
+
 
   //save exercise with date from template to database 
   save(Exercises, name) {
@@ -26,5 +25,7 @@ export class ExerciseComponent {
 
   onChange(e){
     this.selected = e;
+    console.log(this.selected);
   }
+ 
 }

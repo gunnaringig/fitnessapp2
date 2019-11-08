@@ -7,10 +7,9 @@ import { Exercises } from 'src/app/models/Exercises';
 })
 export class ExerciseService {
 
-  constructor(private db: AngularFireDatabase) { 
+  constructor(private db: AngularFireDatabase)
+  { }
 
-  }
-  
 //  Add product to database
 
   // create(Exercises){
@@ -32,4 +31,3 @@ export class ExerciseService {
     return this.db.list('/programs/exercise').valueChanges();
   }
 }
-
