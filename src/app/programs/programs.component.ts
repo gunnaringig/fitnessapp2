@@ -12,27 +12,15 @@ import { Subject } from 'rxjs';
   styleUrls: ['./programs.component.css']
 })
 export class ProgramComponent  {
-  programs: Programs[];
-  programsTest = [];
-  currentSelected: string;
+  programs$
 
-  constructor( private programService: ProgramService,private router: Router) { 
-    this.programService.get()
-    .subscribe( test => {
-      this.programsTest = test;
-    })
+  constructor(private programService: ProgramService, private router: Router) { 
+    this.programs$ = programService.get();
   }
-
 
   //save product with date from template to database 
   save(Programs) {
     this.programService.create(Programs);
-    this.router.navigate(['']);
-  }
-
-  onSelect($event){
-    this.programsTest.find(x => x.name === this.currentSelected);
-    console.log(this.currentSelected);
   }
 
   addExercise(){
