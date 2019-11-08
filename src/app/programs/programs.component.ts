@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProgramService } from 'src/app/program.service';
 import { RouterModule, Router } from '@angular/router';
-import { Programs } from 'src/app/models/programs';
+import { Programs } from 'src/app/models/Programs';
 import { FormBuilder } from '@angular/forms';
 import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs';

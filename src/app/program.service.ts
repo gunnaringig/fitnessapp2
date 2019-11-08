@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Programs } from 'src/app/models/programs';
+import { Programs } from 'src/app/models/Programs';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 
@@ -13,11 +13,12 @@ export class ProgramService {
 
 
   //Add product to database
-  create(Programs){
-    return this.db.list('/programs').push(Programs);
+  create(programs: Programs){
+    return this.db.list('/programs').push(programs);
   }
 
   get(){
-    return this.db.list('/programs').valueChanges();
+     return this.db.list('/programs').valueChanges();
+
   }
 }

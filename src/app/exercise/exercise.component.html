@@ -2,7 +2,7 @@
         <label for="program">Workout programs</label>
             <select [ngModel]="selectedProgram" (ngModelChange)="onChange($event)" name="name" class="form-control">
                 <option>Choose...</option>
-                <option *ngFor="let c of programs$ | async" [value]="c.name">
+                <option *ngFor="let c of programs$ | async" [value]="c.$key">
                     {{ c.name }}
                 </option>
             </select>
