@@ -7,10 +7,10 @@
     </div>
 
     <div class="form-group">
-        <label for="program">Workout programs</label>
-            <select [(ngModel)]="programName"  name="name" id="name" class="form-control">
+        <label>Workout programs</label>
+            <select ngModel name="name" id="name" class="form-control">
                     <option>Choose...</option>
-                    <option *ngFor="let c of programsTest" [value]="c.name" (change)="onSelect($event)">
+                    <option *ngFor="let c of programsTest" [value]="c.name">
                             {{ c.name }}
                          </option>
                 </select>

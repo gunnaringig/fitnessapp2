@@ -10,13 +10,11 @@ import {ExerciseService} from 'src/app/exercise.service'
   styleUrls: ['./exercise.component.css']
 })
 export class ExerciseComponent  {
-  message: string;
 
   constructor( private programService: ProgramService,private router: Router, private exerciseService: ExerciseService) { 
   }
 
   ngOnInit(){
-    this.exerciseService.create(this.message);
   }
 
   //save product with date from template to database 
