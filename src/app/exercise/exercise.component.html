@@ -1,35 +1,35 @@
-<div class="form-group">
+<div class="form-group input-field">
         <label for="program">Workout programs</label>
-            <select [ngModel]="selectedProgram" (ngModelChange)="onChange($event)" name="name" class="form-control">
-                <option>Choose...</option>
-                <option *ngFor="let c of programs$ | async" [value]="c.$key">
-                    {{ c.name }}
-                </option>
-            </select>
-</div>
+            <select [(ngModel)]="programName"  name="name" id="name" class="form-control">
+                    <option>Choose...</option>
+                    <option *ngFor="let c of programsTest$" [value]="c.name" (change)="onSelect($event)">
+                            {{ c.name }}
+                         </option>
+                </select>
+    </div>
 
 <form #f="ngForm" (ngSubmit)="save(f.value)">
 
-        <div class="form-group">
+        <div class="form-group input-field">
             <label for="exercise">Exercise</label>
             <input ngModel name="exercise" id="exercise" type="text" class="form-control">
         </div>
     
-        <div class="form-group">
+        <div class="form-group input-field">
             <label for="description">Description</label>
             <input ngModel name="description" id="description" type="text" class="form-control">
         </div>
     
-        <div class="form-group">
+        <div class="form-group input-field">
             <label for="set">Set</label>
             <input ngModel name="set" id="set" type="text" class="form-control">
         </div> 
         
-        <div class="form-group">
+        <div class="form-group input-field">
             <label for="reps-time">Reps/time</label>
             <input ngModel name="reps-time" id="reps-time" type="text" class="form-control">
         </div> 
     
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary" style="margin-right: 2px; margin-left: 10%;">Save</button>
     </form>
     

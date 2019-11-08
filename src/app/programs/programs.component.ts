@@ -11,24 +11,6 @@ import { Subject } from 'rxjs';
   templateUrl: './programs.component.html',
   styleUrls: ['./programs.component.css']
 })
-<<<<<<< HEAD
-export class ProgramComponent implements OnInit {
-  programs$;
-  programs: Programs[];
-  test: [];
-  test2: any;
-
-  constructor(private programService: ProgramService, private router: Router) { 
-    this.programService.get()
-      .subscribe(e => 
-        {this.programs$ = e});
-
-    console.log(this.programs$);
-  }
-
-  ngOnInit(){
-    this.getPrograms();
-=======
 export class ProgramComponent  {
   programs: Programs[];
   programsTest = [];
@@ -39,7 +21,6 @@ export class ProgramComponent  {
     .subscribe( test => {
       this.programsTest = test;
     })
->>>>>>> parent of a9b82c7... Added simple view for plans on /home or root
   }
 
 
@@ -54,13 +35,13 @@ export class ProgramComponent  {
     console.log(this.currentSelected);
   }
 
-  getPrograms(){
+/*   getPrograms(){
     this.programService.getObject().valueChanges().subscribe(e =>
       {
         this.test2 = e;
       })
       console.log(this.test2);
-  }
+  } */
 
   addExercise(){
     this.router.navigate(['/exercise']);

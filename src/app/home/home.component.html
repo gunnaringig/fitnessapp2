@@ -1,16 +1,21 @@
-<p>home works!</p>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
 
-<table class="table">
+<div class="table-container">
+<table class="w3-table-all w3-hoverable">
     <thead>
-        <tr *ngFor="let p of programs$ | async">
-            <th>Program Name: {{ p.name }}</th>
+        <tr >
+            <th>Program Name: {{ p.name  || 'not found'}}</th>
         </tr>
     </thead>
-
     <tbody>
-        <tr *ngFor="let e of exercises$ | async">
-            <td>{{ e.name }}</td>       
+        <tr>
+            <td>Exercise: {{ e.name || 'not found' }}</td>       
+            <td>Description:</td>
+            <td>Reps/Time:</td>
+            <td>Set:</td>
         </tr>
+        
     </tbody>
 </table>
+</div>
 
