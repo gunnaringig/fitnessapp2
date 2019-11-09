@@ -14,17 +14,23 @@ export class ExerciseService {
   create(Exercises, programName){
     //this.db.list('/programs')
 
-    /*
+  
+/*     let db = firebase.firestore();
+    let programExercisesRef = db.collection('programs')
+    .doc(programName);
+    programExercisesRef.update; */
+
     let db = firebase.firestore();
-    let programExercisesRef = db.collection('/programs/exercises')
-    .doc(programName)
-    .collection('/programs/');
-    */
+    const dbRef = db.collection('programs').doc(programName).collection('exercise').add(Exercises);
+    
+
 
     //return this.db.list('/programs/' + programName + '/exercise').push(Exercises);
   }
 
   get(){
-    return this.db.list('/programs/exercise').valueChanges();
+    const getter = this.db.list('/programs/exercise').valueChanges();
+    return getter;
+    
   }
 }

@@ -4,6 +4,7 @@ import { Programs } from 'src/app/models/Programs';
 import { Observable, BehaviorSubject } from 'rxjs';
 import * as firebase from 'firebase';
 import { FirebaseDatabase, FirebaseFirestore } from 'angularfire2';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 @Injectable({
@@ -30,9 +31,19 @@ export class ProgramService {
     //return this.db.list('/programs').push(programs);
   }
 
-  get() {
-
-    var dbRef = firebase.firestore();
+ async get() {
+  const events = await firebase.firestore().collection('programs')
+  var test = [];
+  events.get().then((querySnapshot) => {
+      const tempDoc = []
+      querySnapshot.forEach((doc) => {
+         tempDoc.push({ id: doc.id, ...doc.data() })
+      })
+      test.push(tempDoc)
+   })
+   console.log(test)
+   return test
+/*     var dbRef = firebase.firestore();
     let programsArray = [];
 
     //const snapshot = await dbRef.collection('programs').get()
@@ -46,15 +57,15 @@ export class ProgramService {
       querySnapshot.forEach(function(doc) {
 
       programsArray.push(doc.data());
-
         //console.log(doc.id, " => ", doc.data());
         //console.log(programsArray);
       });
   });
 
-    //console.log(programsArray);
+    console.log(programsArray);
     return programsArray;
 
-    //return this.db.list('/programs').valueChanges();
-  }
+    //return this.db.list('/programs').valueChanges(); 
+    */
+  } 
 }

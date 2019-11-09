@@ -3,6 +3,7 @@ import { ProgramService } from '../program.service';
 import { ExerciseService } from '../exercise.service';
 import { Observable } from 'rxjs';
 import { Programs } from '../models/Programs';
+import { resolve } from 'url';
 
 @Component({
   selector: 'app-home',
@@ -11,13 +12,13 @@ import { Programs } from '../models/Programs';
 })
 export class HomeComponent implements OnInit {
   programsWithObjectsArray;
-  programsTest = [];  exercises;
+  programs$;
+  program = {}; 
+  exercises;
 
-  constructor(programService: ProgramService, exerciseService: ExerciseService) {
-    this.programsTest = programService.get();
-    this.exercises = exerciseService.get();
-
-    console.log(this.programsWithObjectsArray);
+  constructor(private programService: ProgramService, exerciseService: ExerciseService) {
+    this.program = this.programService.get();
+    console.log(this.program)
    }
 
   ngOnInit() {

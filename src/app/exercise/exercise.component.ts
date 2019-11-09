@@ -13,9 +13,10 @@ export class ExerciseComponent  {
   message: string;
   selected: string;
   name: string;
-  programsTest = [];
+  programs$;
   constructor( private programService: ProgramService,private router: Router, private exerciseService: ExerciseService) { 
-    this.programsTest = this.programService.get();
+    this.programs$ = this.programService.get();
+    console.log(this.programs$)
   }
 
 
@@ -25,9 +26,9 @@ export class ExerciseComponent  {
     this.exerciseService.create(Exercises, name);
   }
 
-  onChange(e){
-    this.selected = e;
-    console.log(this.selected);
+  onChange(event){
+    this.selected = event.target.value;
+    console.log(event.target.value);
   }
  
 }

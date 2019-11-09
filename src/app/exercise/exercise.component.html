@@ -1,8 +1,8 @@
 <div class="form-group input-field">
         <label for="program">Workout programs</label>
-            <select [(ngModel)]="programName"  name="name" id="name" class="form-control">
+            <select [(ngModel)]="programName"  name="name" id="name" class="form-control" (change)="onChange($event)">
                     <option>Choose...</option>
-                    <option *ngFor="let c of programsTest" [value]="c.name" (change)="onSelect($event)">
+                    <option *ngFor="let c of programsTest" [value]="c.id">
                             {{ c.program.name }}
                          </option>
                 </select>
