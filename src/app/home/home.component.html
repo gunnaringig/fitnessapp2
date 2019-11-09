@@ -3,13 +3,21 @@
 <div class="table-container">
 <table class="w3-table-all w3-hoverable">
     <thead>
-        <tr >
-            <th>Program Name: {{ p.name  || 'not found'}}</th>
+        <tr>
+            <th *ngFor="let p of programs">
+                    {{ p.name }}
+            </th>
+            <!--
+                <th>Program Name: {{ p.name  || 'not found'}}</th>
+            -->
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Exercise: {{ e.name || 'not found' }}</td>       
+            <!--
+                <td>Exercise: {{ e.name || 'not found' }}</td>      
+            -->
+            
             <td>Description:</td>
             <td>Reps/Time:</td>
             <td>Set:</td>

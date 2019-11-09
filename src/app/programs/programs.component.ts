@@ -11,29 +11,17 @@ import { Subject } from 'rxjs';
   templateUrl: './programs.component.html',
   styleUrls: ['./programs.component.css']
 })
-export class ProgramComponent  {
-  programs: Programs[];
-  programsTest = [];
-  currentSelected: string;
 
-  constructor( private programService: ProgramService,private router: Router) { 
-    this.programService.get()
-    .subscribe( test => {
-      this.programsTest = test;
-    })
+export class ProgramComponent  {
+
+  constructor(private programService: ProgramService, private router: Router) { 
   }
 
-
-  //save product with date from template to database 
+  //save program with date from template to database 
   save(Programs) {
     this.programService.create(Programs);
-    this.router.navigate(['']);
   }
 
-  onSelect($event){
-    this.programsTest.find(x => x.name === this.currentSelected);
-    console.log(this.currentSelected);
-  }
 
 /*   getPrograms(){
     this.programService.getObject().valueChanges().subscribe(e =>

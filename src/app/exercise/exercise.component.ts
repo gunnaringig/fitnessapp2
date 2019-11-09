@@ -15,10 +15,6 @@ export class ExerciseComponent  {
   name: string;
   programsTest = [];
   constructor( private programService: ProgramService,private router: Router, private exerciseService: ExerciseService) { 
-    this.programService.get()
-    .subscribe( test => {
-      this.programsTest = test;
-    })
   }
 
 
