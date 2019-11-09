@@ -11,12 +11,10 @@ import { Programs } from '../models/Programs';
 })
 export class HomeComponent implements OnInit {
   programsWithObjectsArray;
-  programsWithNamesArray;
-  exercises;
-  heroes = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
+  programsTest = [];  exercises;
 
   constructor(programService: ProgramService, exerciseService: ExerciseService) {
-    this.programsWithObjectsArray = programService.get();
+    this.programsTest = programService.get();
     this.exercises = exerciseService.get();
 
     console.log(this.programsWithObjectsArray);

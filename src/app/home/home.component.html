@@ -4,23 +4,21 @@
 <table class="w3-table-all w3-hoverable">
     <thead>
         <tr>
-            <th *ngFor="let p of programs">
-                    {{ p.name }}
+            <th >
+                 Program name:
             </th>
+            <th>Description:</th>
+            <th>Reps/Time:</th>
+            <th>Set:</th>
+
             <!--
                 <th>Program Name: {{ p.name  || 'not found'}}</th>
             -->
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <!--
-                <td>Exercise: {{ e.name || 'not found' }}</td>      
-            -->
-            
-            <td>Description:</td>
-            <td>Reps/Time:</td>
-            <td>Set:</td>
+        <tr *ngFor="let p of programsTest">
+            {{ p.program.name }}
         </tr>
         
     </tbody>
