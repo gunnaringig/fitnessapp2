@@ -13,10 +13,10 @@ export class ExerciseComponent  {
   message: string;
   selected: string;
   name: string;
-  programs$;
+  program = []; 
   constructor( private programService: ProgramService,private router: Router, private exerciseService: ExerciseService) { 
-    this.programs$ = this.programService.get();
-    console.log(this.programs$)
+    this.program = this.programService.get();
+    console.log(this.program)
   }
 
 

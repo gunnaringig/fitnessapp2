@@ -31,8 +31,8 @@ export class ProgramService {
     //return this.db.list('/programs').push(programs);
   }
 
- async get() {
-  const events = await firebase.firestore().collection('programs')
+ get() {
+/*   const events = await firebase.firestore().collection('programs')
   var test = [];
   events.get().then((querySnapshot) => {
       const tempDoc = []
@@ -42,8 +42,8 @@ export class ProgramService {
       test.push(tempDoc)
    })
    console.log(test)
-   return test
-/*     var dbRef = firebase.firestore();
+   return test */
+    var dbRef = firebase.firestore();
     let programsArray = [];
 
     //const snapshot = await dbRef.collection('programs').get()
@@ -56,7 +56,7 @@ export class ProgramService {
 
       querySnapshot.forEach(function(doc) {
 
-      programsArray.push(doc.data());
+      programsArray.push({id: doc.id, ...doc.data()});
         //console.log(doc.id, " => ", doc.data());
         //console.log(programsArray);
       });
@@ -66,6 +66,6 @@ export class ProgramService {
     return programsArray;
 
     //return this.db.list('/programs').valueChanges(); 
-    */
+    
   } 
 }

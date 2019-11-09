@@ -21,6 +21,8 @@ export class ExerciseService {
     programExercisesRef.update; */
 
     let db = firebase.firestore();
+    //
+    
     const dbRef = db.collection('programs').doc(programName).collection('exercise').add(Exercises);
     
 
@@ -30,7 +32,8 @@ export class ExerciseService {
 
   get(){
     const getter = this.db.list('/programs/exercise').valueChanges();
+    console.log(getter)
     return getter;
-    
+  
   }
 }
