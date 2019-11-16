@@ -5,6 +5,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import * as firebase from 'firebase';
 import { FirebaseDatabase, FirebaseFirestore } from 'angularfire2';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Exercises } from './models/Exercises';
 
 
 @Injectable({
@@ -16,11 +17,13 @@ export class ProgramService {
   constructor() {}
 
   //Add product to database
-  create(program: Programs) {
+  create(program: Exercises) {
 
     var dbRef = firebase.firestore();
 
-    return dbRef.collection('programs').add({ program })
+    console.log(program)
+
+    return dbRef.collection('exercise').add(program)
     .then(function(docRef) {
       console.log("Document written with ID: ", docRef.id);
     })
@@ -60,9 +63,8 @@ export class ProgramService {
         //console.log(doc.id, " => ", doc.data());
         //console.log(programsArray);
       });
-  });
+  }); 
 
-    console.log(programsArray);
     return programsArray;
 
     //return this.db.list('/programs').valueChanges(); 

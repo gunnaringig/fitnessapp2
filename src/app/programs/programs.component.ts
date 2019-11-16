@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ProgramService } from 'src/app/program.service';
 import { RouterModule, Router } from '@angular/router';
 import { Programs } from 'src/app/models/Programs';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs';
+import { auth } from 'firebase';
+import { AuthService } from '../auth.service';
+import { Exercises } from '../models/Exercises';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-programs',
@@ -12,13 +16,23 @@ import { Subject } from 'rxjs';
   styleUrls: ['./programs.component.css']
 })
 
-export class ProgramComponent  {
 
-  constructor(private programService: ProgramService, private router: Router) { 
+export class ProgramComponent  {
+  userId;
+
+  constructor(private programService: ProgramService, private router: Router, private authService: AuthService) { 
+    this.authService.user$.subscribe(auth => {
+      if(auth) { 
+        this.userId = auth.uid;     
+        console.log(this.userId)
+      }
+    });
   }
 
-  //save program with date from template to database 
-  save(Programs) {
+  //save program with data from template to database 
+  save(Programs : Exercises) {
+    Programs.userId = this.userId;
+    console.log(Programs)
     this.programService.create(Programs);
   }
 

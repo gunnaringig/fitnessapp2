@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   programsWithObjectsArray;
   programs$;
   program = []; 
-  exercises;
+  exercises = [];
 
   constructor(private programService: ProgramService, private exerciseService: ExerciseService) {
     this.program = this.programService.get();

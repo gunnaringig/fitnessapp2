@@ -3,6 +3,7 @@ import { ProgramService } from 'src/app/program.service';
 import { RouterModule, Router } from '@angular/router';
 import { Exercises } from 'src/app/models/Exercises';
 import {ExerciseService} from 'src/app/exercise.service'
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-exercise',
@@ -14,16 +15,30 @@ export class ExerciseComponent  {
   selected: string;
   name: string;
   program = []; 
-  constructor( private programService: ProgramService,private router: Router, private exerciseService: ExerciseService) { 
+  exercises = [];
+  userId;
+
+  constructor( private programService: ProgramService,private router: Router, private exerciseService: ExerciseService, private authService: AuthService) { 
+    this.authService.user$.subscribe(auth => {
+      if(auth) { 
+        this.userId = auth.uid;     
+        console.log(this.userId)
+      }
+    });
+  
     this.program = this.programService.get();
-    console.log(this.program)
+    this.exercises = this.exerciseService.get();
+
+    console.log(this.exercises)
   }
 
 
   //save exercise with date from template to database 
-  save(Exercises, name) {
-    name = this.selected;
-    this.exerciseService.create(Exercises, name);
+  save(Exercises: Exercises) {
+    Exercises.userId = this.userId;
+    Exercises.programName = this.selected;
+    console.log(Exercises)
+    this.exerciseService.create(Exercises);
   }
 
   onChange(event){

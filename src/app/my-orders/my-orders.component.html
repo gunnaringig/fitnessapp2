@@ -1,26 +1,41 @@
-<div class="w3-display-container">
-        <div class="w3-display-topmiddle">
-                <p>my-orders works!</p>
-        </div>
-    </div>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+
+                <h3 style="text-align: center;">My workouts</h3>
+
     <div class="table-container">
-            <table class="w3-table-all w3-hoverable">
-                <thead>
-                    <tr >
-                        <th>Program Name: {{ p.name  || 'not found'}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Exercise: {{ e.name || 'not found' }}</td>       
-                        <td>Description:</td>
-                        <td>Reps/Time:</td>
-                        <td>Set:</td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-            </div>
+    <table class="w3-table-all w3-hoverable">
+        <thead>
+            <tr>
+                <th >
+                    Program name:
+                </th>
+                <th>
+                    Exercise name:
+                </th>
+                <th>Description: </th>
+                <th>Reps/Time:</th>
+                <th>Set:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of exercises">
+                {{ p.programName }}
+                <td>
+                    {{ p.exercise}}
+                </td>
+                <td>
+                    {{ p.description}}</td>
+                <td>
+                    {{ p.reps-time }}
+                </td>
+                <td>
+                        {{ p.set }}
+                </td>
+            </tr>
+      
             
-            
+        </tbody>
+    </table>
+    </div>
+    
     

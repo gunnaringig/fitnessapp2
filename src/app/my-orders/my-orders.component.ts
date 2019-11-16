@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { ExerciseService } from '../exercise.service';
 
 @Component({
   selector: 'app-my-orders',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyOrdersComponent implements OnInit {
 
-  constructor() { }
+  userId;
+  exercises = [];
+
+  constructor( private authService: AuthService, private exerciseService: ExerciseService) { 
+    this.authService.user$.subscribe(auth => {
+      if(auth) { 
+        this.userId = auth.uid;     
+        console.log(this.userId)
+      }
+    });
+  }
 
   ngOnInit() {
+    this.exercises = this.exerciseService.getByUserId(this.userId);
+    console.log(this.exercises)
+
   }
+
 
 }
