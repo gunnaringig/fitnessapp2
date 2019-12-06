@@ -10,7 +10,8 @@ import { AuthService } from '../auth.service';
   templateUrl: './exercise.component.html',
   styleUrls: ['./exercise.component.css']
 })
-export class ExerciseComponent  {
+export class ExerciseComponent implements OnInit  {
+ 
   message: string;
   selected: string;
   name: string;
@@ -26,13 +27,15 @@ export class ExerciseComponent  {
       }
     });
   
-    this.program = this.programService.get();
-    this.exercises = this.exerciseService.get();
+
 
     console.log(this.exercises)
   }
 
-
+  ngOnInit(): void {
+    this.program = this.programService.get();
+    this.exercises = this.exerciseService.getByUserId(this.userId);
+    }
   //save exercise with date from template to database 
   save(Exercises: Exercises) {
     Exercises.userId = this.userId;

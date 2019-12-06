@@ -16,7 +16,6 @@ export class MyOrdersComponent implements OnInit {
     this.authService.user$.subscribe(auth => {
       if(auth) { 
         this.userId = auth.uid;     
-        console.log(this.userId)
       }
     });
   }
@@ -24,7 +23,6 @@ export class MyOrdersComponent implements OnInit {
   ngOnInit() {
     this.exercises = this.exerciseService.getByUserId(this.userId);
     console.log(this.exercises)
-
   }
 
 

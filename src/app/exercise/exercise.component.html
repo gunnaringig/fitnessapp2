@@ -1,9 +1,9 @@
 <div class="form-group input-field">
         <label for="program">Workout programs</label>
-            <select [(ngModel)]="programName"  name="name" id="name" class="form-control" (change)="onChange($event)">
+            <select   name="name" id="name" class="form-control" (change)="onChange($event)">
                     <option>Choose...</option>
                     <option *ngFor="let c of exercises" [value]="c.programName">
-                            <a *ngIf="c.programName === " >{{ c.programName }}</a>
+                            <a >{{ c.programName }}</a>
                     </option>
             </select>
 </div>
